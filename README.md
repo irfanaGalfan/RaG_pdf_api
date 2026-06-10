@@ -33,5 +33,25 @@ This application processes documents line-by-line, converts them into high-dimen
 ### 1. Prerequisites
 Ensure you have **Ollama** installed on your machine and have pulled the required models:
 ```cmd
+
 ollama pull llama3
 ollama pull nomic-embed-text
+2. Installation
+Open your terminal inside the project directory and install the required Python dependencies:
+
+DOS
+pip install fastapi uvicorn streamlit qdrant-client langchain-ollama pypdf pydantic
+3. Start the Backend API
+Run the high-performance FastAPI server. Note: We run without the --reload flag to cleanly prevent Windows multiprocessing file-locking race conditions on the local database folder.
+
+DOS
+python -m uvicorn src.main:app --host 0.0.0.0 --port 8000
+4. Start the Streamlit User Interface
+Open a separate terminal window and launch your browser control panel dashboard:
+
+DOS
+python -m streamlit run src/app.py
+Open your browser to http://localhost:8501, upload your file, hit Process, and begin chatting!
+
+🔒 Privacy & Security Guardrails
+Because this entire ecosystem runs on your physical machine, zero bytes of data leave your computer. No external cloud APIs are called, making it perfectly safe for analyzing highly confidential personal data, company resumes, or financial document profiles.
