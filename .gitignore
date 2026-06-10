@@ -1,0 +1,5 @@
+__pycache__/
+.env
+qdrant_storage/
+qdrant_db/
+*.pdf
